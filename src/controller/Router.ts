@@ -1,10 +1,12 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
-import { testRoute } from './Controller';
-import logMiddleware from '../middleware/LogMiddleware';
+import { sendEmailRoute, scheduleEmailRoute, getFilteredEmailsRoute } from './controller';
+import logMiddleware from '../middleware/logMiddleware';
 
 const router = Router();
 
-router.get('/testRoute', logMiddleware, asyncHandler(testRoute));
+router.post('/sendEmail', logMiddleware, asyncHandler(sendEmailRoute));
+router.post('/scheduleEmail', logMiddleware, asyncHandler(scheduleEmailRoute));
+router.post('/getEmails', logMiddleware, asyncHandler(getFilteredEmailsRoute));
 
 export default router;
