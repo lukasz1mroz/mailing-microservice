@@ -7,6 +7,6 @@ const router = Router();
 
 router.post('/sendEmail', logMiddleware, asyncHandler(sendEmailRoute));
 router.post('/scheduleEmail', logMiddleware, asyncHandler(scheduleEmailRoute));
-router.post('/getEmails', logMiddleware, asyncHandler(getFilteredEmailsRoute));
+router.get('/getFilteredEmails', logMiddleware, asyncHandler(getFilteredEmailsRoute));
 
 export default router;
