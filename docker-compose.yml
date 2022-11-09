@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+
+  app:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - '3000:8080'
+    volumes:
+      - ./:/usr/src/app/
+      - /usr/serc/app/node_modules
+
+  postgres:
+    image: postgres:14.1-alpine
+    restart: always
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./db-script.sql:/docker-entrypoint-initdb.d/db-script.sql
+
